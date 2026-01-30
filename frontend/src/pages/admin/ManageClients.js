@@ -74,7 +74,7 @@ function ManageClients() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this client?')) {
       try {
-        const response = await fetch(`/api/clients/${id}`, {
+        const response = await fetch(`${API_URL}/api/clients/${id}`, {
           method: 'DELETE'
         });
 

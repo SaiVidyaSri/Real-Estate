@@ -72,7 +72,7 @@ function ManageProjects() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
-        const response = await fetch(`/api/projects/${id}`, {
+        const response = await fetch(`${API_URL}/api/projects/${id}`, {
           method: 'DELETE'
         });
 

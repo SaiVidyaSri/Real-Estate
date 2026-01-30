@@ -21,7 +21,7 @@ function ViewContacts() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this contact?')) {
       try {
-        const response = await fetch(`/api/contacts/${id}`, {
+        const response = await fetch(`${API_URL}/api/contacts/${id}`, {
           method: 'DELETE'
         });
 

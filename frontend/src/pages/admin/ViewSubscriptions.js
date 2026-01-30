@@ -21,7 +21,7 @@ function ViewSubscriptions() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this subscription?')) {
       try {
-        const response = await fetch(`/api/newsletter/${id}`, {
+        const response = await fetch(`${API_URL}/api/newsletter/${id}`, {
           method: 'DELETE'
         });
 
