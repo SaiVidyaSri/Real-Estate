@@ -14,11 +14,20 @@ exports.getAllProjects = async (req, res) => {
 exports.createProject = async (req, res) => {
   try {
     const { name, description } = req.body;
+    
+    if (!name || !description) {
+      return res.status(400).json({ message: 'Name and description are required' });
+    }
+    
     let image = req.body.image;
     
     // If file was uploaded, use the uploaded file path
     if (req.file) {
       image = `/uploads/projects/${req.file.filename}`;
+    }
+    
+    if (!image) {
+      return res.status(400).json({ message: 'Image is required' });
     }
     
     const project = new Project({
@@ -30,6 +39,7 @@ exports.createProject = async (req, res) => {
     const newProject = await project.save();
     res.status(201).json(newProject);
   } catch (error) {
+    console.error('Error creating project:', error);
     res.status(400).json({ message: error.message });
   }
 };

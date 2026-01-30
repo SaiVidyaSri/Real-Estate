@@ -2,9 +2,20 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
+
+// Create upload directories if they don't exist
+const uploadDirs = ['uploads', 'uploads/projects', 'uploads/clients'];
+uploadDirs.forEach(dir => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+    console.log(`Created directory: ${dir}`);
+  }
+});
 
 // Middleware
 const corsOptions = {

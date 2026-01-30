@@ -14,11 +14,20 @@ exports.getAllClients = async (req, res) => {
 exports.createClient = async (req, res) => {
   try {
     const { name, description, designation } = req.body;
+    
+    if (!name || !description || !designation) {
+      return res.status(400).json({ message: 'Name, description, and designation are required' });
+    }
+    
     let image = req.body.image;
     
     // If file was uploaded, use the uploaded file path
     if (req.file) {
       image = `/uploads/clients/${req.file.filename}`;
+    }
+    
+    if (!image) {
+      return res.status(400).json({ message: 'Image is required' });
     }
     
     const client = new Client({
@@ -31,6 +40,7 @@ exports.createClient = async (req, res) => {
     const newClient = await client.save();
     res.status(201).json(newClient);
   } catch (error) {
+    console.error('Error creating client:', error);
     res.status(400).json({ message: error.message });
   }
 };
