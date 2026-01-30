@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImageCropper from '../../components/ImageCropper';
+import API_URL from '../../config';
 
 function ManageClients() {
   const [clients, setClients] = useState([]);
@@ -17,7 +18,7 @@ function ManageClients() {
 
   const fetchClients = async () => {
     try {
-      const response = await fetch('/api/clients');
+      const response = await fetch(`${API_URL}/api/clients`);
       const data = await response.json();
       setClients(data);
     } catch (error) {
@@ -52,7 +53,7 @@ function ManageClients() {
       formDataToSend.append('designation', formData.designation);
       formDataToSend.append('image', imageFile);
 
-      const response = await fetch('/api/clients', {
+      const response = await fetch(`${API_URL}/api/clients`, {
         method: 'POST',
         body: formDataToSend
       });

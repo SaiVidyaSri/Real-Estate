@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Hero.css';
+import API_URL from '../config';
 
 function Hero() {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ function Hero() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/contacts', {
+      const response = await fetch(`${API_URL}/api/contacts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

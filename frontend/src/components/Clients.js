@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Clients.css';
+import API_URL from '../config';
 
 function Clients() {
   const [clients, setClients] = useState([]);
@@ -10,7 +11,7 @@ function Clients() {
 
   const fetchClients = async () => {
     try {
-      const response = await fetch('/api/clients');
+      const response = await fetch(`${API_URL}/api/clients`);
       const data = await response.json();
       setClients(data);
     } catch (error) {

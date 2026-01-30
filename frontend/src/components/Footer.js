@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Footer.css';
+import API_URL from '../config';
 
 function Footer() {
   const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ function Footer() {
     }
 
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch(`${API_URL}/api/newsletter`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

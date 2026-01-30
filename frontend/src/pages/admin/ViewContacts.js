@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from '../../config';
 
 function ViewContacts() {
   const [contacts, setContacts] = useState([]);
@@ -9,7 +10,7 @@ function ViewContacts() {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch('/api/contacts');
+      const response = await fetch(`${API_URL}/api/contacts`);
       const data = await response.json();
       setContacts(data);
     } catch (error) {

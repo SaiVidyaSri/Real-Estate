@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import API_URL from '../config';
 
 function Navbar() {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ function Navbar() {
     }
 
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch(`${API_URL}/api/newsletter`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

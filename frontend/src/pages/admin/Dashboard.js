@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from '../../config';
 
 function Dashboard() {
   const [stats, setStats] = useState({
@@ -15,10 +16,10 @@ function Dashboard() {
   const fetchStats = async () => {
     try {
       const [projects, clients, contacts, subscriptions] = await Promise.all([
-        fetch('/api/projects').then(res => res.json()),
-        fetch('/api/clients').then(res => res.json()),
-        fetch('/api/contacts').then(res => res.json()),
-        fetch('/api/newsletter').then(res => res.json())
+        fetch(`${API_URL}/api/projects`).then(res => res.json()),
+        fetch(`${API_URL}/api/clients`).then(res => res.json()),
+        fetch(`${API_URL}/api/contacts`).then(res => res.json()),
+        fetch(`${API_URL}/api/newsletter`).then(res => res.json())
       ]);
 
       setStats({

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from '../../config';
 
 function ViewSubscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -9,7 +10,7 @@ function ViewSubscriptions() {
 
   const fetchSubscriptions = async () => {
     try {
-      const response = await fetch('/api/newsletter');
+      const response = await fetch(`${API_URL}/api/newsletter`);
       const data = await response.json();
       setSubscriptions(data);
     } catch (error) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImageCropper from '../../components/ImageCropper';
+import API_URL from '../../config';
 
 function ManageProjects() {
   const [projects, setProjects] = useState([]);
@@ -16,7 +17,7 @@ function ManageProjects() {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch('/api/projects');
+      const response = await fetch(`${API_URL}/api/projects`);
       const data = await response.json();
       setProjects(data);
     } catch (error) {
@@ -50,7 +51,7 @@ function ManageProjects() {
       formDataToSend.append('description', formData.description);
       formDataToSend.append('image', imageFile);
 
-      const response = await fetch('/api/projects', {
+      const response = await fetch(`${API_URL}/api/projects`, {
         method: 'POST',
         body: formDataToSend
       });
