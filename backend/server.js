@@ -19,14 +19,26 @@ uploadDirs.forEach(dir => {
 
 // Middleware
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || '*',
-  credentials: true,
-  optionsSuccessStatus: 200
+  origin: '*', // Allow all origins for images and API
+  credentials: false,
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
+
+// Apply CORS to all routes including static files
 app.use(cors(corsOptions));
+
+// Serve static files with CORS headers
+app.use('/uploads', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET');
+  res.header('Cross-Origin-Resource-Policy', 'cross-origin');
+  next();
+}, express.static('uploads'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/uploads', express.static('uploads'));
 
 // Routes
 app.use('/api/projects', require('./routes/projects'));
