@@ -1,0 +1,142 @@
+.footer {
+  background: var(--primary-blue);
+  color: white;
+  padding: 60px 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-section h3 {
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: white;
+}
+
+.footer-section a{
+  text-decoration: none;
+}
+
+.footer-section h3:hover {
+  color: var(--primary-orange);
+}
+
+.footer-subscribe {
+  flex-shrink: 0;
+}
+
+.footer-subscribe h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.footer-subscribe-form {
+  display: flex;
+  gap: 15px;
+  min-width: 400px;
+}
+
+.footer-subscribe-form input {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: transparent;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.footer-subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom {
+  background: black;
+  padding: 30px 20px;
+  width: 100vw;
+  margin-top: 40px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  color: white;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-social a {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: var(--primary-orange);
+  transform: translateY(-3px);
+}
+
+.footer-social img {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .footer-main-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .footer-subscribe-form {
+    flex-direction: column;
+    min-width: 100%;
+  }
+  
+  .footer-bottom-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
