@@ -12,10 +12,16 @@ function Clients() {
   const fetchClients = async () => {
     try {
       const response = await fetch(`${API_URL}/api/clients`);
-      const data = await response.json();
-      setClients(data);
+      if (response.ok) {
+        const data = await response.json();
+        setClients(Array.isArray(data) ? data : []);
+      } else {
+        console.error('Failed to fetch clients');
+        setClients([]);
+      }
     } catch (error) {
       console.error('Error fetching clients:', error);
+      setClients([]);
     }
   };
 
@@ -28,7 +34,7 @@ function Clients() {
           {clients.map((client) => (
             <div key={client._id} className="client-card">
               <div className="client-image">
-                <img src={client.image} alt={client.name} />
+                <img src={`${API_URL}${client.image}`} alt={client.name} />
               </div>
               <p className="client-description">{client.description}</p>
               <h4 className="client-name">{client.name}</h4>

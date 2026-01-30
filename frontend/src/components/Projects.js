@@ -12,10 +12,16 @@ function Projects() {
   const fetchProjects = async () => {
     try {
       const response = await fetch(`${API_URL}/api/projects`);
-      const data = await response.json();
-      setProjects(data);
+      if (response.ok) {
+        const data = await response.json();
+        setProjects(Array.isArray(data) ? data : []);
+      } else {
+        console.error('Failed to fetch projects');
+        setProjects([]);
+      }
     } catch (error) {
       console.error('Error fetching projects:', error);
+      setProjects([]);
     }
   };
 
@@ -31,7 +37,7 @@ function Projects() {
           {projects.map((project) => (
             <div key={project._id} className="project-card">
               <div className="project-image">
-                <img src={project.image} alt={project.name} />
+                <img src={`${API_URL}${project.image}`} alt={project.name} />
               </div>
               <div className="project-info">
                 <h3>{project.name}</h3>
