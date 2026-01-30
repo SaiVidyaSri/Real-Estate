@@ -164,7 +164,7 @@ function ManageClients() {
               {clients.map((client) => (
                 <tr key={client._id}>
                   <td>
-                    <img src={client.image} alt={client.name} className="item-image" style={{ borderRadius: '50%' }} />
+                    <img src={`${API_URL}${client.image}`} alt={client.name} className="item-image" style={{ borderRadius: '50%' }} />
                   </td>
                   <td>{client.name}</td>
                   <td>{client.designation}</td>

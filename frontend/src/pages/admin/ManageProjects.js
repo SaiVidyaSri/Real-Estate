@@ -149,7 +149,7 @@ function ManageProjects() {
               {projects.map((project) => (
                 <tr key={project._id}>
                   <td>
-                    <img src={project.image} alt={project.name} className="item-image" />
+                    <img src={`${API_URL}${project.image}`} alt={project.name} className="item-image" />
                   </td>
                   <td>{project.name}</td>
                   <td>{project.description.substring(0, 100)}...</td>
